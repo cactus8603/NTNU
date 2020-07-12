@@ -1,0 +1,12 @@
+# Gunicorn
+gunicorn_error.log
+
+# Python
+__pycache__
+
+# vs & vs code cache
+.vs
+.vscode
+
+# validate code jpg
+*.jpg

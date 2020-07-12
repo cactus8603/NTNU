@@ -1,0 +1,13 @@
+# MongoDB
+MongoDB
+
+# vs & vs code cache
+.vs
+.vscode
+
+# json files
+boolean\ (*).json
+number\ (*).json
+public_course\ (*).json
+taking_course\ (*).json
+user\ (*).json

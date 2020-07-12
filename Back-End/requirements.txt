@@ -1,0 +1,13 @@
+flask
+
+gunicorn
+
+mongoengine
+PyJWT
+requests
+
+# PIL
+# Pillow
+# tesseract
+# tesseract-ocr
+# pytesseract

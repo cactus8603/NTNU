@@ -1,0 +1,14 @@
+[
+    { text: '請選擇', value: '0' },
+    { text: '語言與文學', value: '00UG' },
+    { text: '藝術與美感', value: '01UG' },
+    { text: '哲學思維與道德推理', value: '02UG' },
+    { text: '公民素養與社會探究', value: '03UG' },
+    { text: '歷史與文化', value: '04UG' },
+    { text: '數學與邏輯思維', value: '05UG' },
+    { text: '科學與生命', value: '06UG' },
+    { text: '第二外語', value: '07UG' },
+    { text: '生活技能', value: '08UG' },
+    { text: '自主學習', value: '09UG' },
+    { text: '所有通識, value: 'all' }
+]

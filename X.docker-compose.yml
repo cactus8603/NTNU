@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  caddy:
+    image: abiosoft/caddy
+    environment:
+      - ACME_AGREE=true
+
+  mongo:
+    image: mongo
+    volumes:
+      - ./MongoDB:/data/db
+      - ./user.json:/user.json
+      - ./public_course.json:/public_course.json
+      - ./number.json:/number.json
+      - ./taking_course.json:/taking_course.json
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    env_file: 
+      - ./.config/mongo-express.env
+  
+  vue:
+    build: ./Front-End
+
+  web:
+    build: ./Back-End
+    environment:
+      - MONGO_HOST=mongo
+
+  robot:
+    build: ./Course-Taking
+    environment:
+      - MONGO_HOST=mongo

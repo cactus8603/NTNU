@@ -1,0 +1,10 @@
+mongomock
+mongoengine
+requests
+pytz
+
+# PIL
+# Pillow
+# tesseract
+# tesseract-ocr
+# pytesseract

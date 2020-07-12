@@ -1,0 +1,15 @@
+192.168.0.103:8080 {
+    root /vue/dist
+    rewrite {
+        if {path} not_starts_with /api
+        to {path} {path}/ /
+    }
+    proxy /api web:8080 {
+        transparent
+        without /api
+    }
+}
+ 
+192.168.0.103:8081 {
+    proxy / mongo-express:8081
+}

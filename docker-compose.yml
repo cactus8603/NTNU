@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+
+  mongo:
+    container_name: mongodb
+    image: mongo
+    restart: always
+    networks:
+      - ntnu-course-taking
+        #    environment:
+            #      MONGO_INITDB_ROOT_USERNAME: aisu170232
+            #      MONGO_INITDB_ROOT_PASSWORD: hung170232
+    volumes:
+      - ./MongoDB:/data/db
+      - ./user.json:/user.json
+      - ./public_course.json:/public_course.json
+      - ./number.json:/number.json
+      - ./taking_course.json:/taking_course.json
+
+  mongo-express:
+    container_name: mongodb-express
+    image: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: aisu170232
+      ME_CONFIG_BASICAUTH_PASSWORD: hung170232
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    networks:
+      - server
+      - ntnu-course-taking
+  
+  vue:
+    container_name: vue
+    build: ./Front-End
+    volumes:
+      - ./Front-End:/app
+      - /app/node_modules/
+    networks:
+      - server
+      - ntnu-course-taking
+
+  web:
+    container_name: web
+    build: ./Back-End
+    volumes:
+      - ./Back-End:/app
+    environment:
+      - MONGO_HOST=mongo
+    networks:
+      - server
+      - ntnu-course-taking
+
+  robot:
+    container_name: robot
+    build: ./Course-Taking
+    volumes: 
+      - ./Course-Taking:/app
+    environment:
+      - MONGO_HOST=mongo
+    networks:
+      - ntnu-course-taking
+
+networks:
+  ntnu-course-taking:
+  server:
+    external: true
